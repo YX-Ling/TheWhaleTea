@@ -1,6 +1,8 @@
 var frame = window.parent.document.getElementById("whaleLogoIframe");
 var w = frame.clientWidth;
 var h = frame.clientHeight;
+var dsq = w ** 2 + h ** 2;
+var d = Math.sqrt(dsq);
 
 var homeLogo;
 var homeWahleText;
@@ -46,10 +48,11 @@ function setup() {
     }
     imageMode(CENTER);
 
-    for(let i = 0; i < 15; i++){
-        swimWhales[i] = new Sprite(swimWhaleanime, random(w*0.2,w*0.8), random(h*0.3, h*0.8), random(0.1,1), random(50, 150),random(0.05, 0.1),random(-PI,PI));
+    for(let i = 0; i < 20; i++){
+        swimWhales[i] = new Sprite(swimWhaleanime, random(-d,d), random(-d, d), random(0.1,0.8), random(30, 130),random(0.05, 0.1),random(-PI,PI));
     }
 }
+
 
 function draw() {
     clear();
@@ -76,8 +79,10 @@ function draw() {
         swimWhale.animate();
     }
 
-
+    for(let i = 0; i < swimWhales.length; i++){
+        if(swimWhales[i].x ** 2 + swimWhales[i].y ** 2 > dsq){
+            swimWhales.splice(i, 1, new Sprite(swimWhaleanime, random(-d,d), random(-d, d), random(0.1,0.8), random(30, 130),random(0.05, 0.1),random(-PI,PI)));
+        }
+    }
     
-    
-
 }

@@ -6,9 +6,11 @@ class Sprite {
         this.y = y;
         this.size = size;
         this.col = col;
+        this.appear = 0;
         this.speed = speed;
         this.direction = direction;
         this.index = 0;
+        this.loop = 0;
     }
 
     show(){
@@ -16,8 +18,12 @@ class Sprite {
         push();
         rotate(this.direction);
         translate(this.x, this.y);
+        rotate(this.loop);
         scale(this.size);
-        tint(255,this.col);
+        if(this.appear < this.col){
+            this.appear += 0.3;
+        }
+        tint(255,this.appear);
         image(this.animation[index], 0, 0);
         pop();
     }
