@@ -10,7 +10,6 @@ class Sprite {
         this.speed = speed;
         this.direction = direction;
         this.index = 0;
-        this.loop = 0;
     }
 
     show(){
@@ -18,7 +17,6 @@ class Sprite {
         push();
         rotate(this.direction);
         translate(this.x, this.y);
-        rotate(this.loop);
         scale(this.size);
         if(this.appear < this.col){
             this.appear += 0.3;
